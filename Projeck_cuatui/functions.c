@@ -105,7 +105,7 @@ void inputStudent(Student student[], int *length) {
         if (student[*length].classroomId[0] == '\0') {
             printf("\n*Error, Please Try Again*\n\n");
         }
-    } while (student[*length].classroomId[0] == '\0');  // Lo?i b? ki?m tra isdigit không c?n thi?t
+    } while (student[*length].classroomId[0] == '\0');  // Lo?i b? ki?m tra isdigit khÃ´ng c?n thi?t
 
     do {
         count = 0;
@@ -304,40 +304,44 @@ void deleteStudent(Student student[], int *length){
 		}
 	}
 }
-
 void sortStudent(Student student[], int length){
-	int sortOrder;
-	if(length<2){
-		system("cls");
-		printf("*Not Enough Students To Sort*\n");
-	} else{
-		do{
-			printf("\nSort By Ascending(0) or Descending(1) order: ");
-			scanf("%d", &sortOrder);
-		}while(sortOrder!=1 && sortOrder!=0);
-		system("cls");
-		if(sortOrder==0){
-			for(int i=1; i<length; i++){
-				Student key = student[i];
-				int j = i-1;
-				while(j>=0 && strcmp(key.name, student[j].name)<0){
-					student[j+1]=student[j];
-					j--;
-				}
-				student[j+1]=key;
-			}
-		} else{
-			for(int i=1; i<length; i++){
-				Student key = student[i];
-				int j = i-1;
-				while(j>=0 && strcmp(key.name, student[j].name)>0){
-					student[j+1]=student[j];
-					j--;
-				}
-				student[j+1]=key;
-			}
-		}
-	}
+    int sortOrder;
+    if(length < 2){
+        system("cls");
+        printf("*Not Enough Students To Sort*\n");
+    } else {
+        do {
+            printf("\nSort By Ascending(0) or Descending(1) order: ");
+            scanf("%d", &sortOrder);
+        } while(sortOrder != 1 && sortOrder != 0);
+        
+        system("cls");
+        // xap xep tang dan
+        if(sortOrder == 0){
+            for(int i = 1; i < length; i++){
+                Student key = student[i];
+                int j = i - 1;
+                
+                while(j >= 0 && key.studentId < student[j].studentId){
+                    student[j + 1] = student[j];
+                    j--;
+                }
+                student[j + 1] = key;
+            }
+            // xap xep giam dan 
+        } else { 
+            for(int i = 1; i < length; i++){
+                Student key = student[i];
+                int j = i - 1;
+                
+                while(j >= 0 && key.studentId > student[j].studentId){
+                    student[j + 1] = student[j];
+                    j--;
+                }
+                student[j + 1] = key;
+            }
+        }
+    }
     if(length>=2){
     	printf("\n\t**SORTED STUDENTS**\n\n");
 		printf("|=======|========================|==============|============================|==================|\n");
