@@ -37,7 +37,7 @@ void studentMenu(){
 	printf("[3] Search A Student\n");
 	printf("[4] Edit A Student\n");
 	printf("[5] Delete A Student\n");
-	printf("[6] Sort Students By Name\n");
+	printf("[6] Sort Students By ID\n");
 	printf("[0] Back\n");
 	printf("================================\n");
 }
